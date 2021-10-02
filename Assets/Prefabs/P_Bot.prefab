@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 5057585118469843654}
   - component: {fileID: 5057585118469843653}
   - component: {fileID: 283821912976177256}
+  - component: {fileID: 8001966202406641997}
   m_Layer: 0
   m_Name: P_Bot
   m_TagString: Untagged
@@ -170,6 +171,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5057585116950425648}
+  - {fileID: 4430554510477718643}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -225,9 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52e29873ed411e48a5821beceb1b417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 5057585116950425655}
-  interactiveObjectTag: InteractiveObject
+  maxObjectSpeedToCatch: 0.3
   range: 10
+  interactableTag: Interactable
 --- !u!195 &5057585118469843651
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -276,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a401f15740c1f4cbd68b7baeb65211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
-  throwableObjectAttachTransform: {fileID: 0}
+  throwForce: 20
+  throwableObjectAttachTransform: {fileID: 4430554510477718643}
 --- !u!54 &5057585118469843654
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -326,6 +328,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistanceToInteractible: 2
+--- !u!114 &8001966202406641997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057585118469843662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4226d8b63741b1f4d9134f96c6547270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 2
+  stunFromEditor: 0
+  stubEffectGo: {fileID: 5057585116975571108}
+  stunSound: {fileID: 0}
 --- !u!1 &5482172492698927132
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,3 +439,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8983355230900803855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4430554510477718643}
+  m_Layer: 0
+  m_Name: ThrowPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4430554510477718643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8983355230900803855}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5057585118469843661}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
