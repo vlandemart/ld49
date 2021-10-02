@@ -17,6 +17,11 @@ public class ThrowableObject : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    public float GetCurrentSpeed()
+    {
+        return rb.velocity.magnitude;
+    }
+
     public void Take(Collider carrier)
     {
         rb.isKinematic = true;
