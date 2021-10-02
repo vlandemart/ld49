@@ -44,4 +44,13 @@ public class ThrowableObject : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Physics.IgnoreCollision(carrier, coll, false);
     }
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        var stuneable = other.gameObject.GetComponent<Stuneable>();
+        if (stuneable != null)
+        {
+            stuneable.Stun(gameObject);
+        }
+    }
 }
