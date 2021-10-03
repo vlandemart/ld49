@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   responseSound: {fileID: 0}
-  explosionForce: 200
+  explosionForce: 3000
   signalsNeeded: 3
   countdownMaxTime: 30
   timeToStabilize: 4

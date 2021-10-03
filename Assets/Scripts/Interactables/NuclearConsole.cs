@@ -150,7 +150,7 @@ public class NuclearConsole : InteractiveResponse
         foreach (var rb in allRb)
         {
             var force = (rb.position - transform.position).normalized * explosionForce;
-            rb.AddForce(force, ForceMode.VelocityChange);
+            rb.AddForce(force);
         }
     }
 }
