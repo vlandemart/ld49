@@ -1103,6 +1103,7 @@ GameObject:
   - component: {fileID: 239118382997671138}
   - component: {fileID: 4237118891215685755}
   - component: {fileID: 3844856993504563975}
+  - component: {fileID: 1650701030}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1188,10 +1189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8dd4d615ce2488a931731a7d4a842a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCollider: {fileID: 8200175755398732314}
-  mainRigidbody: {fileID: 5816148374982684255}
   RootRagdoll: {fileID: 6641924062908099134}
   AttachRagdoll: {fileID: 4828108838846355701}
+  mainCollider: {fileID: 8200175755398732314}
+  mainRigidbody: {fileID: 5816148374982684255}
 --- !u!114 &4237118891215685755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,6 +1224,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistanceToInteractible: 2
+--- !u!114 &1650701030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816148374982684229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a24a7c50fb37d77bc6fe064a77f114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForce: 15
+  targetPositionMarker: {fileID: 3844856993608486397}
+  throwableObjectAttachTransform: {fileID: 3844856993426863227}
+  maxThrowDistance: 10
 --- !u!1 &6530242422240081855
 GameObject:
   m_ObjectHideFlags: 0
