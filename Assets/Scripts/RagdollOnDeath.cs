@@ -100,10 +100,12 @@ public class RagdollOnDeath : MonoBehaviour
     private IEnumerator ToggleAnimator(float time)
     {
         // Wait for "time" seconds and then set animator to "actv"
+        //mainAnimator.SetTrigger("StandUp");
+        mainAnimator.Play("GetUp");
+
         yield return new WaitForSeconds(time);
 
         mainAnimator.enabled = true;
-        mainAnimator.SetTrigger("StandUp");
 
         Vector3 position = RootRagdoll.transform.position;
         position.y += 1;
