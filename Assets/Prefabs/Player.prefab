@@ -1171,6 +1171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 2
+  speedToStun: 8
   stunFromEditor: 0
   stubEffectGo: {fileID: 788763960016245286}
   stunSound: {fileID: 0}
@@ -1191,6 +1192,8 @@ MonoBehaviour:
   mainAnimator: {fileID: 1029815924313170858}
   mainCollider: {fileID: 8200175755398732314}
   mainRigidbody: {fileID: 5816148374982684255}
+  RootRagdoll: {fileID: 6641924062908099134}
+  AttachRagdoll: {fileID: 4828108838846355701}
 --- !u!114 &4237118891215685755
 MonoBehaviour:
   m_ObjectHideFlags: 0
