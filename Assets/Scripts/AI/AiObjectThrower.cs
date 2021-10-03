@@ -11,6 +11,13 @@ public class AiObjectThrower : MonoBehaviour
 
     private ThrowableObject _currentThrowable;
 
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
+
     public bool IsHoldingObject()
     {
         return _currentThrowable != null;
@@ -33,6 +40,8 @@ public class AiObjectThrower : MonoBehaviour
         if (_currentThrowable == null)
             return;
 
+        animator.Play("Throw");
+        
         var startPos = throwableObjectAttachTransform.position;
         _currentThrowable.transform.LookAt(InputManager.Instance.GetCursorPosition());
         _currentThrowable.GetComponent<Rigidbody>().velocity = (targetPos - startPos).normalized * throwForce;

@@ -13,6 +13,8 @@ public class ObjectThrower : MonoBehaviour
 
     private ThrowableObject _currentThrowable;
 
+    private Animator animator;
+
     public bool IsHoldingObject()
     {
         return _currentThrowable != null;
@@ -25,6 +27,7 @@ public class ObjectThrower : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         InputManager.Instance.OnLeftMouseButtonDown.AddListener(ThrowObject);
     }
 
@@ -83,11 +86,11 @@ public class ObjectThrower : MonoBehaviour
     {
         if (_currentThrowable == null)
             return;
-        
+
         _currentThrowable.Throw(gameObject.GetComponent<Collider>());
         _currentThrowable.gameObject.transform.parent = null;
         _currentThrowable = null;
-        
+
         targetPositionMarker.SetActive(false);
     }
 
@@ -99,6 +102,8 @@ public class ObjectThrower : MonoBehaviour
 
         var startPos = transform.position;
         var throwPos = targetPositionMarker.transform.position;
+
+        animator.Play("Throw");
 
         _currentThrowable.transform.LookAt(InputManager.Instance.GetCursorPosition());
         _currentThrowable.GetComponent<Rigidbody>().velocity = (throwPos - startPos).normalized * throwForce;
