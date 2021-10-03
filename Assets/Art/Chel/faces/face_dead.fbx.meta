@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 0fb80f0f1dde29142bbaa9a7848381d4
+guid: 50f118f4bbfbc984ab42390cdabe1b99
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes_mouth
+    second: {fileID: 2100000, guid: b813281380496504a921d29bc70d9a8a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

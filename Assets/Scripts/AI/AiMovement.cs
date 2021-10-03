@@ -28,7 +28,7 @@ public class AiMovement : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private BehaviorTree behaviorTree;
     private GameObject[] interactiveObjects;
-    private static readonly int Velocity = Animator.StringToHash("velocity");
+    private static readonly int Velocity = Animator.StringToHash("Velocity");
 
     private void Start()
     {

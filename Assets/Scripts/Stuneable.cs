@@ -9,6 +9,7 @@ public class Stuneable : MonoBehaviour
     public readonly Relay OnExitStun = new Relay();
     
     [SerializeField] private float stunTime = 2.0f;
+    [SerializeField] private float speedToStun = 8f;
     [SerializeField] private bool stunFromEditor;
     [SerializeField] private GameObject stubEffectGo;
     [SerializeField] private AudioSource stunSound;
@@ -24,6 +25,8 @@ public class Stuneable : MonoBehaviour
     {
         if (IsStunned())
             return;
+        if (velocity.magnitude < speedToStun)
+            return;
 
         EnterStun(velocity);
     }
@@ -35,6 +38,7 @@ public class Stuneable : MonoBehaviour
 
     private void Start()
     {
+        SwitchFaces(true);
         stubEffectGo.SetActive(false);
     }
 
@@ -65,11 +69,11 @@ public class Stuneable : MonoBehaviour
         isStunned = true;
         stunEndTime = Time.time + stunTime;
 
-        GetComponent<ObjectThrower>()?.ThrowObject();
+        GetComponent<ObjectThrower>()?.DropObject();
         PlaySound();
         SwitchFaces(false);
         stubEffectGo.SetActive(true);
-        OnEnterStun?.Dispatch(velocity);
+        //OnEnterStun?.Dispatch(velocity);
     }
 
     private void ExitStun()
@@ -78,7 +82,7 @@ public class Stuneable : MonoBehaviour
 
         SwitchFaces(true);
         stubEffectGo.SetActive(false);
-        OnExitStun?.Dispatch();
+        //OnExitStun?.Dispatch();
     }
 
     private void PlaySound()

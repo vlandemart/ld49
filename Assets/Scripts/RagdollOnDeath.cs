@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class RagdollOnDeath : MonoBehaviour
 {
-    [SerializeField] private Animator mainAnimator;
     [SerializeField] private Collider mainCollider;
     [SerializeField] private Rigidbody mainRigidbody;
 
@@ -14,6 +13,7 @@ public class RagdollOnDeath : MonoBehaviour
     private bool isKinematicByDefault;
     private Stuneable stuneable;
 
+    private Animator mainAnimator;
     public GameObject RootRagdoll;
     public GameObject AttachRagdoll;
 
@@ -27,6 +27,7 @@ public class RagdollOnDeath : MonoBehaviour
 
     private void Start()
     {
+        mainAnimator = GetComponentInChildren<Animator>();
         torsoLocalPosition = RootRagdoll.transform.localPosition;
         DisableRagdollStep();
         stuneable.OnEnterStun.AddListener(EnableRagdoll);
@@ -94,12 +95,6 @@ public class RagdollOnDeath : MonoBehaviour
         {
             mainRigidbody.isKinematic = isKinematicByDefault;
         }
-    }
-    
-    public Vector3 Random(float min, float max)
-    {
-        return new Vector3(UnityEngine.Random.Range(min, max), UnityEngine.Random.Range(min, max),
-            UnityEngine.Random.Range(min, max));
     }
     
     private IEnumerator ToggleAnimator(float time)
