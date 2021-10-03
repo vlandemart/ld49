@@ -1420,13 +1420,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   responseSound: {fileID: 0}
+  explosionForce: 200
   signalsNeeded: 3
   countdownMaxTime: 30
   timeToStabilize: 4
   nuclearBlast: {fileID: 3813763605223741319}
   audioSource: {fileID: 1301527552}
   winSound: {fileID: 8300000, guid: 59d995ffe5345c0bd9e057cb68c130b9, type: 3}
-  loseSound: {fileID: 0}
+  loseSound: {fileID: 8300000, guid: 24ebe49f0a74f5f9396f8df38d8ad038, type: 3}
   stableSound: {fileID: 0}
   unstableSound: {fileID: 0}
 --- !u!114 &3855830888501736222

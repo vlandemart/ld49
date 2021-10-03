@@ -10,7 +10,8 @@ public class NuclearConsole : InteractiveResponse
     public readonly Relay OnBecameUnstable = new Relay();
     public readonly Relay OnLevelLost = new Relay();
     public readonly Relay OnLevelFinished = new Relay();
-    
+
+    [SerializeField] private float explosionForce = 300f;
     [SerializeField] private int signalsNeeded = 5;
     [SerializeField] private float countdownMaxTime = 30f;
     [SerializeField] private float timeToStabilize = 4f;
@@ -128,6 +129,7 @@ public class NuclearConsole : InteractiveResponse
         nuclearBlast.gameObject.SetActive(true);
         nuclearBlast.Play();
         PlaySound(loseSound);
+        Explode();
         
         OnLevelLost?.Dispatch();
     }
@@ -140,5 +142,15 @@ public class NuclearConsole : InteractiveResponse
         audioSource.pitch = Random.Range(0.9f, 1.1f);
         audioSource.clip = clipToPlay;
         audioSource.Play();
+    }
+
+    private void Explode()
+    {
+        var allRb = FindObjectsOfType<Rigidbody>();
+        foreach (var rb in allRb)
+        {
+            var force = (rb.position - transform.position).normalized * explosionForce;
+            rb.AddForce(force, ForceMode.VelocityChange);
+        }
     }
 }
