@@ -872,7 +872,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &5057585118469843650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1769,13 +1769,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f118f4bbfbc984ab42390cdabe1b99, type: 3}
---- !u!1 &6070094488104363594 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 50f118f4bbfbc984ab42390cdabe1b99, type: 3}
-  m_PrefabInstance: {fileID: 6412042950557653787}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6878859659733908720 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 50f118f4bbfbc984ab42390cdabe1b99, type: 3}
+  m_PrefabInstance: {fileID: 6412042950557653787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6070094488104363594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 50f118f4bbfbc984ab42390cdabe1b99, type: 3}
   m_PrefabInstance: {fileID: 6412042950557653787}
   m_PrefabAsset: {fileID: 0}
