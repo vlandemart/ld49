@@ -7,13 +7,14 @@ public class PersonalMovement : MonoBehaviour
     public Animator Animator;
 
     public float speed = 6f;
+    private static readonly int Velocity = Animator.StringToHash("Velocity");
 
     // Update is called once per frame
     void FixedUpdate()
     {
         if (this.IsStunned())
         {
-            // Animator.SetFloat("velocity", 0);
+            Animator.SetFloat(Velocity, 0);
             return;
         }
 
@@ -37,11 +38,11 @@ public class PersonalMovement : MonoBehaviour
             movementVector.y = rb.velocity.y;
             rb.velocity = movementVector;
 
-            // Animator.SetFloat("velocity", movementVector.magnitude);
+            Animator.SetFloat(Velocity, movementVector.magnitude);
         }
         else
         {
-            // Animator.SetFloat("velocity", 0);
+            Animator.SetFloat(Velocity, 0);
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
         }
     }

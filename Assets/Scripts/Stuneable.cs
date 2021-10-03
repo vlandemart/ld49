@@ -35,6 +35,7 @@ public class Stuneable : MonoBehaviour
 
     private void Start()
     {
+        SwitchFaces(true);
         stubEffectGo.SetActive(false);
     }
 
