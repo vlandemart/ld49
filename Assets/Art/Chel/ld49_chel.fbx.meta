@@ -18,22 +18,7 @@ ModelImporter:
   - first:
       74: -6107337582989235046
     second: chel_scelet|05hands_up
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: eyes_mouth
-    second: {fileID: 2100000, guid: b813281380496504a921d29bc70d9a8a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: main_color
-    second: {fileID: 2100000, guid: 42b2e42afba204a4c9fc9912928f8553, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: shoes
-    second: {fileID: 2100000, guid: b813281380496504a921d29bc70d9a8a, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -73,7 +58,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -124,7 +109,7 @@ ModelImporter:
       takeName: chel_scelet|03get_up
       internalID: 0
       firstFrame: 0
-      lastFrame: 34
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -269,7 +254,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 

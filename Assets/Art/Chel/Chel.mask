@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Chel
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: chel_scelet
+    m_Weight: 0
+  - m_Path: chel_scelet/main
+    m_Weight: 0
+  - m_Path: chel_scelet/main/torso
+    m_Weight: 0
+  - m_Path: chel_scelet/main/torso/l_hand_upper
+    m_Weight: 1
+  - m_Path: chel_scelet/main/torso/l_hand_upper/l_hand_lower
+    m_Weight: 1
+  - m_Path: chel_scelet/main/torso/l_hand_upper/l_hand_lower/l_hand_lower_end
+    m_Weight: 1
+  - m_Path: chel_scelet/main/torso/l_leg_upper
+    m_Weight: 0
+  - m_Path: chel_scelet/main/torso/l_leg_upper/r_leg_lower
+    m_Weight: 0
+  - m_Path: chel_scelet/main/torso/l_leg_upper/r_leg_lower/r_leg_lower_end
+    m_Weight: 0
+  - m_Path: chel_scelet/main/torso/r_hand_upper
+    m_Weight: 1
+  - m_Path: chel_scelet/main/torso/r_hand_upper/r_hand_lower
+    m_Weight: 1
+  - m_Path: chel_scelet/main/torso/r_hand_upper/r_hand_lower/r_hand_lower_end
+    m_Weight: 1
+  - m_Path: chel_scelet/main/torso/r_leg_upper
+    m_Weight: 0
+  - m_Path: chel_scelet/main/torso/r_leg_upper/l_leg_lower
+    m_Weight: 0
+  - m_Path: chel_scelet/main/torso/r_leg_upper/l_leg_lower/l_leg_lower_end
+    m_Weight: 0
+  - m_Path: face_dead
+    m_Weight: 0
+  - m_Path: face_normal
+    m_Weight: 0
+  - m_Path: shoes
+    m_Weight: 0

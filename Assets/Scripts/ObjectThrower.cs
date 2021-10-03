@@ -14,7 +14,8 @@ public class ObjectThrower : MonoBehaviour
     private ThrowableObject _currentThrowable;
 
     private Animator animator;
-
+    private static readonly int Throw = Animator.StringToHash("Throw");
+    
     public bool IsHoldingObject()
     {
         return _currentThrowable != null;
@@ -28,7 +29,7 @@ public class ObjectThrower : MonoBehaviour
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        InputManager.Instance.OnLeftMouseButtonDown.AddListener(ThrowObject);
+        InputManager.Instance.OnLeftMouseButtonDown.AddListener(PlayAnim);
     }
 
     private void Update()
@@ -80,6 +81,7 @@ public class ObjectThrower : MonoBehaviour
         _currentThrowable.transform.rotation = throwableObjectAttachTransform.rotation;
 
         targetPositionMarker.SetActive(true);
+        animator.SetLayerWeight(1, 1);
     }
 
     public void DropObject()
@@ -92,9 +94,15 @@ public class ObjectThrower : MonoBehaviour
         _currentThrowable = null;
 
         targetPositionMarker.SetActive(false);
+        animator.SetLayerWeight(1, 0);
     }
 
     //Called on LMB event
+    public void PlayAnim()
+    {
+        animator.SetTrigger(Throw);
+    }
+
     public void ThrowObject()
     {
         if (_currentThrowable == null)
@@ -102,8 +110,6 @@ public class ObjectThrower : MonoBehaviour
 
         var startPos = transform.position;
         var throwPos = targetPositionMarker.transform.position;
-
-        animator.Play("Throw");
 
         _currentThrowable.transform.LookAt(InputManager.Instance.GetCursorPosition());
         _currentThrowable.GetComponent<Rigidbody>().velocity = (throwPos - startPos).normalized * throwForce;
@@ -113,5 +119,6 @@ public class ObjectThrower : MonoBehaviour
         _currentThrowable = null;
 
         targetPositionMarker.SetActive(false);
+        animator.SetLayerWeight(1, 0);
     }
 }

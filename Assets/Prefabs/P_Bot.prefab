@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5620202731992556280}
   - component: {fileID: 632074653756454346}
+  - component: {fileID: 7284479453463617600}
   m_Layer: 0
   m_Name: P_Ragdoll_Chell
   m_TagString: Untagged
@@ -52,6 +53,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7284479453463617600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53199793098316119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c477cf3a98401944ea99938a163be91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1418567534146427091
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +141,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000000013969844, y: 0.0021388582, z: -0.00000000167566}
+  m_ConnectedAnchor: {x: -6.9849204e-10, y: 0.0021388584, z: 6.526461e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -332,7 +345,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.004999999, y: 0.005014085, z: 0.0000000030547378}
+  m_ConnectedAnchor: {x: -0.004999999, y: 0.005014085, z: 2.6076996e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -442,7 +455,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0024362807, y: -0.00007953541, z: 0.0000000012817907}
+  m_ConnectedAnchor: {x: 0.0024362782, y: -0.00007953541, z: -0.0000000010465152}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -552,7 +565,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0050000004, y: 0.0050140843, z: 6.705523e-10}
+  m_ConnectedAnchor: {x: 0.0049999985, y: 0.005014085, z: -0.0000000011920924}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -678,7 +691,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0024362798, y: -0.00007953495, z: 0.0000000024434994}
+  m_ConnectedAnchor: {x: -0.0024362775, y: -0.00007953541, z: 1.1519247e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -875,7 +888,6 @@ MonoBehaviour:
   maxObjectSpeedToCatch: 0.3
   range: 10
   interactableTag: Interactable
-  animator: {fileID: 0}
 --- !u!114 &5057585118469843648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,6 +931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 2
+  speedToStun: 8
   stunFromEditor: 0
   stubEffectGo: {fileID: 8990966646661391582}
   stunSound: {fileID: 0}
@@ -936,7 +949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8dd4d615ce2488a931731a7d4a842a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainAnimator: {fileID: 0}
   mainCollider: {fileID: 5057585118469843649}
   mainRigidbody: {fileID: 5057585118469843654}
   RootRagdoll: {fileID: 5772077133170876217}
@@ -1130,7 +1142,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000000016298148, y: 0.0021388584, z: -0.0000000018167987}
+  m_ConnectedAnchor: {x: 6.984921e-10, y: 0.0021388584, z: 5.115066e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1284,7 +1296,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.3308335e-16, y: 0.0016028672, z: -3.255342e-10}
+  m_ConnectedAnchor: {x: -5.6080606e-16, y: 0.0016028662, z: 0.0000000020027722}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:

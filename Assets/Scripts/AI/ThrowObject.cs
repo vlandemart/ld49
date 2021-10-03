@@ -21,7 +21,7 @@ public class ThrowObject : Action
 
     public override void OnStart()
     {
-        objectThrower.ThrowObject(targetPosition.Value);
+        objectThrower.PlayAnimThrow(targetPosition.Value);
     }
 
     public override TaskStatus OnUpdate()
