@@ -23,28 +23,30 @@ public class ObjectThrower : MonoBehaviour
         _provider = gameObject.GetComponent<InteractibleObjectsProvider>();
     }
 
+    private void Start()
+    {
+        InputManager.Instance.OnLeftMouseButtonDown.AddListener(ThrowObject);
+    }
+
     private void Update()
     {
         ThrowableObject obj = _provider.closestThrowable;
-        if (obj != null && _currentThrowable == null)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                TrySetObjectAsCurrent(obj);
-            }
-        }
-        else
-        {
-            if (_currentThrowable == null)
-                return;
+        if (obj == null)
+            return;
 
-            DrawAim();
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ThrowObject();
-            }
+        if (_currentThrowable == null && Input.GetKeyDown(KeyCode.E))
+        {
+            TrySetObjectAsCurrent(obj);
+            return;
         }
+
+        if (_currentThrowable == null)
+            return;
+
+        DrawAim();
+
+        if (Input.GetKeyDown(KeyCode.E))
+            DropObject();
     }
 
     private void DrawAim()
@@ -75,6 +77,18 @@ public class ObjectThrower : MonoBehaviour
         _currentThrowable.transform.rotation = throwableObjectAttachTransform.rotation;
 
         targetPositionMarker.SetActive(true);
+    }
+
+    public void DropObject()
+    {
+        if (_currentThrowable == null)
+            return;
+        
+        _currentThrowable.Throw(gameObject.GetComponent<Collider>());
+        _currentThrowable.gameObject.transform.parent = null;
+        _currentThrowable = null;
+        
+        targetPositionMarker.SetActive(false);
     }
 
     //Called on LMB event
