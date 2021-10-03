@@ -48,9 +48,13 @@ public class ThrowableObject : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         var stuneable = other.gameObject.GetComponent<Stuneable>();
-        if (stuneable != null)
-        {
-            stuneable.Stun(gameObject);
-        }
+        if (stuneable == null)
+            return;
+
+        var rb = other.gameObject.GetComponent<Rigidbody>();
+        if (rb == null)
+            return;
+        
+        stuneable.Stun(rb.velocity);
     }
 }

@@ -7,6 +7,7 @@ public class ObjectThrower : MonoBehaviour
     [SerializeField] private float throwForce = 10;
     [SerializeField] private GameObject targetPositionMarker;
     [SerializeField] private Transform throwableObjectAttachTransform;
+    [SerializeField] private float maxThrowDistance = 10f;
 
     private InteractibleObjectsProvider _provider;
 
@@ -34,14 +35,14 @@ public class ObjectThrower : MonoBehaviour
         }
         else
         {
-            if (_currentThrowable != null)
-            {
-                DrawAim();
+            if (_currentThrowable == null)
+                return;
 
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    ThrowObject();
-                }
+            DrawAim();
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ThrowObject();
             }
         }
     }
@@ -52,7 +53,7 @@ public class ObjectThrower : MonoBehaviour
         Vector3 dir = markerPos - gameObject.transform.position;
         float dist = dir.magnitude;
 
-        if (dist > _provider.maxDistanceToInteractible)
+        if (dist > maxThrowDistance)
         {
             dir = dir.normalized * _provider.maxDistanceToInteractible;
             markerPos = gameObject.transform.position + dir;
@@ -83,7 +84,7 @@ public class ObjectThrower : MonoBehaviour
             return;
 
         var startPos = transform.position;
-        var throwPos = InputManager.Instance.GetCursorPosition();
+        var throwPos = targetPositionMarker.transform.position;
 
         _currentThrowable.transform.LookAt(InputManager.Instance.GetCursorPosition());
         _currentThrowable.GetComponent<Rigidbody>().velocity = (throwPos - startPos).normalized * throwForce;

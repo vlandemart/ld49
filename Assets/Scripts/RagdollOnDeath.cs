@@ -9,44 +9,46 @@ public class RagdollOnDeath : MonoBehaviour
     [SerializeField] private Rigidbody mainRigidbody;
 
     private List<Collider> allColliders = new List<Collider>();
-
     private List<Rigidbody> allRigidbodies = new List<Rigidbody>();
-
-    private void Start()
-    {
-        DisableRagdoll();
-    }
-
     private bool isKinematicByDefault;
+    private Stuneable stuneable;
 
     private void Awake()
     {
+        stuneable = GetComponent<Stuneable>();
         isKinematicByDefault = mainRigidbody.isKinematic;
     }
+    
+    private void Start()
+    {
+        DisableRagdoll();
+        stuneable.OnEnterStun.AddListener(EnableRagdoll);
+        stuneable.OnExitStun.AddListener(DisableRagdoll);
+    }
 
-    public void EnableRagdoll(GameObject damager)
+    private void EnableRagdoll(Vector3 hitObjectVelocity)
     {
         mainAnimator.enabled = false;
         
         if (mainCollider != null)
         {
-            foreach (var collider in allColliders)
+            foreach (var col in allColliders)
             {
-                collider.enabled = true;
+                col.enabled = true;
             }
 
             mainCollider.enabled = false;
         }
 
-        Vector3 velocity = transform.position - damager.transform.position;
+        Vector3 velocity = hitObjectVelocity;
         velocity.Normalize();
         velocity *= 7f;
 
-        foreach (var rigidbody in allRigidbodies)
+        foreach (var rb in allRigidbodies)
         {
-            rigidbody.mass = 0.1f;
-            rigidbody.isKinematic = false;
-            rigidbody.velocity = velocity;
+            rb.mass = 0.1f;
+            rb.isKinematic = false;
+            rb.velocity = velocity;
         }
 
         if (mainRigidbody != null)
@@ -55,12 +57,12 @@ public class RagdollOnDeath : MonoBehaviour
         }
     }
 
-    public void DisableRagdoll()
+    private void DisableRagdoll()
     {
         allColliders.AddRange(GetComponentsInChildren<Collider>());
-        foreach (var collider in allColliders)
+        foreach (var col in allColliders)
         {
-            collider.enabled = false;
+            col.enabled = false;
         }
 
         if (mainCollider != null)
@@ -69,9 +71,9 @@ public class RagdollOnDeath : MonoBehaviour
         }
 
         allRigidbodies.AddRange(GetComponentsInChildren<Rigidbody>());
-        foreach (var rigidbody in allRigidbodies)
+        foreach (var rb in allRigidbodies)
         {
-            rigidbody.isKinematic = true;
+            rb.isKinematic = true;
         }
 
         if (mainRigidbody != null)
