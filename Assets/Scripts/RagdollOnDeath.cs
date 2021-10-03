@@ -1,23 +1,29 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sigtrap.Relays;
 using UnityEngine;
 
 public class RagdollOnDeath : MonoBehaviour
 {
+    public GameObject RootRagdoll;
+    public GameObject AttachRagdoll;
+
+    public bool IsRagdolled()
+    {
+        return isRagdolled;
+    }
+
     [SerializeField] private Collider mainCollider;
     [SerializeField] private Rigidbody mainRigidbody;
 
     private List<Collider> allColliders = new List<Collider>();
     private List<Rigidbody> allRigidbodies = new List<Rigidbody>();
-    private bool isKinematicByDefault;
     private Stuneable stuneable;
-
     private Animator mainAnimator;
-    public GameObject RootRagdoll;
-    public GameObject AttachRagdoll;
-
     private Vector3 torsoLocalPosition;
+    private bool isKinematicByDefault;
+    private bool isRagdolled;
 
     private void Awake()
     {
@@ -36,6 +42,7 @@ public class RagdollOnDeath : MonoBehaviour
 
     private void EnableRagdoll(Vector3 hitObjectVelocity)
     {
+        isRagdolled = true;
         RootRagdoll.transform.SetParent(null);
         mainAnimator.enabled = false;
 
@@ -113,5 +120,6 @@ public class RagdollOnDeath : MonoBehaviour
 
         RootRagdoll.transform.SetParent(AttachRagdoll.transform);
         RootRagdoll.transform.localPosition = torsoLocalPosition;
+        isRagdolled = false;
     }
 }
