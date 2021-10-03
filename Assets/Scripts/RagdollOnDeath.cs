@@ -59,6 +59,9 @@ public class RagdollOnDeath : MonoBehaviour
 
     private void DisableRagdoll()
     {
+        mainAnimator.enabled = true;
+        mainAnimator.SetTrigger("StandUp");
+        
         allColliders.AddRange(GetComponentsInChildren<Collider>());
         foreach (var col in allColliders)
         {

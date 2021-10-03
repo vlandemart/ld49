@@ -13,7 +13,7 @@ public class PersonalMovement : MonoBehaviour
     {
         if (this.IsStunned())
         {
-            Animator.SetFloat("velocity", 0);
+            // Animator.SetFloat("velocity", 0);
             return;
         }
 
@@ -37,11 +37,11 @@ public class PersonalMovement : MonoBehaviour
             movementVector.y = rb.velocity.y;
             rb.velocity = movementVector;
 
-            Animator.SetFloat("velocity", movementVector.magnitude);
+            // Animator.SetFloat("velocity", movementVector.magnitude);
         }
         else
         {
-            Animator.SetFloat("velocity", 0);
+            // Animator.SetFloat("velocity", 0);
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
         }
     }

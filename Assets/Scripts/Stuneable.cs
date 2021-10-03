@@ -40,6 +40,14 @@ public class Stuneable : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isStunned)
+                ExitStun();
+            else
+                EnterStun(Vector3.zero);
+        }
+        
         if (stunFromEditor)
         {
             stunFromEditor = false;
