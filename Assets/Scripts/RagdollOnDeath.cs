@@ -96,19 +96,19 @@ public class RagdollOnDeath : MonoBehaviour
             mainRigidbody.isKinematic = isKinematicByDefault;
         }
     }
-    
+
     private IEnumerator ToggleAnimator(float time)
     {
         // Wait for "time" seconds and then set animator to "actv"
         yield return new WaitForSeconds(time);
-        
+
         mainAnimator.enabled = true;
         mainAnimator.SetTrigger("StandUp");
-        
+
         Vector3 position = RootRagdoll.transform.position;
         position.y += 1;
         transform.position = position;
-        
+
         RootRagdoll.transform.SetParent(AttachRagdoll.transform);
         RootRagdoll.transform.localPosition = torsoLocalPosition;
     }

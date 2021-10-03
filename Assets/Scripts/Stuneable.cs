@@ -73,7 +73,7 @@ public class Stuneable : MonoBehaviour
         PlaySound();
         SwitchFaces(false);
         stubEffectGo.SetActive(true);
-        //OnEnterStun?.Dispatch(velocity);
+        OnEnterStun?.Dispatch(velocity);
     }
 
     private void ExitStun()
@@ -82,7 +82,7 @@ public class Stuneable : MonoBehaviour
 
         SwitchFaces(true);
         stubEffectGo.SetActive(false);
-        //OnExitStun?.Dispatch();
+        OnExitStun?.Dispatch();
     }
 
     private void PlaySound()
