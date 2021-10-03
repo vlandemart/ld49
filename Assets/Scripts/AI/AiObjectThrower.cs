@@ -33,9 +33,10 @@ public class AiObjectThrower : MonoBehaviour
         if (_currentThrowable == null)
             return;
 
-        var startPos = transform.position;
+        var startPos = throwableObjectAttachTransform.position;
         _currentThrowable.transform.LookAt(InputManager.Instance.GetCursorPosition());
         _currentThrowable.GetComponent<Rigidbody>().velocity = (targetPos - startPos).normalized * throwForce;
+        Debug.DrawLine(targetPos, startPos, Color.cyan, 2f);
 
         _currentThrowable.Throw(gameObject.GetComponent<Collider>());
         _currentThrowable.gameObject.transform.parent = null;
