@@ -1,4 +1,3 @@
-using System;
 using Sigtrap.Relays;
 using UnityEngine;
 
@@ -16,6 +15,13 @@ public class NuclearConsole : InteractiveResponse
     [SerializeField] private float countdownMaxTime = 30f;
     [SerializeField] private float timeToStabilize = 4f;
     [SerializeField] private ParticleSystem nuclearBlast;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip winSound;
+    [SerializeField] private AudioClip loseSound;
+    [SerializeField] private AudioClip stableSound;
+    [SerializeField] private AudioClip unstableSound;
 
     private float currentTimer = 0f;
     private float currentStableTime = 0f;
@@ -79,12 +85,14 @@ public class NuclearConsole : InteractiveResponse
         
         isUnstable = true;
         OnBecameUnstable?.Dispatch();
+        PlaySound(unstableSound);
     }
 
     private void MakeStable()
     {
         isUnstable = false;
         OnBecameStable?.Dispatch();
+        PlaySound(stableSound);
     }
 
     private void UpdateTimer()
@@ -109,14 +117,28 @@ public class NuclearConsole : InteractiveResponse
     private void FinishLevel()
     {
         isLevelFinished = true;
+        PlaySound(winSound);
+        
         OnLevelFinished?.Dispatch();
     }
 
     private void LoseLevel()
     {
         isLevelFinished = true;
-        OnLevelLost?.Dispatch();
         nuclearBlast.gameObject.SetActive(true);
         nuclearBlast.Play();
+        PlaySound(loseSound);
+        
+        OnLevelLost?.Dispatch();
+    }
+    
+    private void PlaySound(AudioClip clipToPlay)
+    {
+        if (audioSource == null || clipToPlay == null)
+            return;
+        
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.clip = clipToPlay;
+        audioSource.Play();
     }
 }
