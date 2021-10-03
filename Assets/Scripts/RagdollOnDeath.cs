@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,23 +14,30 @@ public class RagdollOnDeath : MonoBehaviour
     private bool isKinematicByDefault;
     private Stuneable stuneable;
 
+    public GameObject RootRagdoll;
+    public GameObject AttachRagdoll;
+
+    private Vector3 torsoLocalPosition;
+
     private void Awake()
     {
         stuneable = GetComponent<Stuneable>();
         isKinematicByDefault = mainRigidbody.isKinematic;
     }
-    
+
     private void Start()
     {
-        DisableRagdoll();
+        torsoLocalPosition = RootRagdoll.transform.localPosition;
+        DisableRagdollStep();
         stuneable.OnEnterStun.AddListener(EnableRagdoll);
         stuneable.OnExitStun.AddListener(DisableRagdoll);
     }
 
     private void EnableRagdoll(Vector3 hitObjectVelocity)
     {
+        RootRagdoll.transform.SetParent(null);
         mainAnimator.enabled = false;
-        
+
         if (mainCollider != null)
         {
             foreach (var col in allColliders)
@@ -59,9 +67,12 @@ public class RagdollOnDeath : MonoBehaviour
 
     private void DisableRagdoll()
     {
-        mainAnimator.enabled = true;
-        mainAnimator.SetTrigger("StandUp");
-        
+        DisableRagdollStep();
+        StartCoroutine(ToggleAnimator(0.5f));
+    }
+
+    private void DisableRagdollStep()
+    {
         allColliders.AddRange(GetComponentsInChildren<Collider>());
         foreach (var col in allColliders)
         {
@@ -84,10 +95,26 @@ public class RagdollOnDeath : MonoBehaviour
             mainRigidbody.isKinematic = isKinematicByDefault;
         }
     }
-
+    
     public Vector3 Random(float min, float max)
     {
         return new Vector3(UnityEngine.Random.Range(min, max), UnityEngine.Random.Range(min, max),
             UnityEngine.Random.Range(min, max));
+    }
+    
+    private IEnumerator ToggleAnimator(float time)
+    {
+        // Wait for "time" seconds and then set animator to "actv"
+        yield return new WaitForSeconds(time);
+        
+        mainAnimator.enabled = true;
+        mainAnimator.SetTrigger("StandUp");
+        
+        Vector3 position = RootRagdoll.transform.position;
+        position.y += 1;
+        transform.position = position;
+        
+        RootRagdoll.transform.SetParent(AttachRagdoll.transform);
+        RootRagdoll.transform.localPosition = torsoLocalPosition;
     }
 }
