@@ -1026,7 +1026,7 @@ GameObject:
   - component: {fileID: 4237118891215685755}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1090,6 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 2
+  speedToStun: 8
   stunFromEditor: 0
   stubEffectGo: {fileID: 788763960016245286}
   stunSound: {fileID: 0}
@@ -1107,7 +1108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8dd4d615ce2488a931731a7d4a842a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainAnimator: {fileID: 0}
   mainCollider: {fileID: 8200175755398732314}
   mainRigidbody: {fileID: 5816148374982684255}
   RootRagdoll: {fileID: 6641924062908099134}
