@@ -17,11 +17,14 @@ public class Stuneable : MonoBehaviour
 
     float stunEndTime;
 
+    private Animator animator;
+    
     private RagdollOnDeath ragdollOnDeath;
 
     private void Awake()
     {
         ragdollOnDeath = GetComponent<RagdollOnDeath>();
+        animator = GetComponent<Animator>();
     }
 
     public bool IsStunned()
@@ -49,6 +52,13 @@ public class Stuneable : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Idle");
+            ragdollOnDeath.DisableRagdoll();
+            animator.SetTrigger("StandUp");
+        }
+    
         if (stunFromEditor)
         {
             stunFromEditor = false;

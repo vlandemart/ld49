@@ -968,7 +968,6 @@ GameObject:
   - component: {fileID: 6310728907038257338}
   - component: {fileID: 5057585118469843650}
   - component: {fileID: 5057585118469843648}
-  - component: {fileID: 5057585118469843653}
   - component: {fileID: 283821912976177256}
   - component: {fileID: 8001966202406641997}
   - component: {fileID: 5735213764767558123}
@@ -1135,24 +1134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwForce: 20
   throwableObjectAttachTransform: {fileID: 4430554510477718643}
---- !u!114 &5057585118469843653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5057585118469843662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4226d8b63741b1f4d9134f96c6547270, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stunTime: 5
-  stunFromEditor: 0
-  stubEffectGo: {fileID: 0}
-  stunSound: {fileID: 0}
-  aliveFace: {fileID: 0}
-  deadFace: {fileID: 0}
 --- !u!114 &283821912976177256
 MonoBehaviour:
   m_ObjectHideFlags: 0
