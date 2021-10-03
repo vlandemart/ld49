@@ -831,7 +831,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 4.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 1000
@@ -930,8 +930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4226d8b63741b1f4d9134f96c6547270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stunTime: 2
-  speedToStun: 8
+  stunTime: 6
+  speedToStun: 4
   stunFromEditor: 0
   stubEffectGo: {fileID: 8990966646661391582}
   stunSound: {fileID: 0}
@@ -949,10 +949,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8dd4d615ce2488a931731a7d4a842a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCollider: {fileID: 5057585118469843649}
-  mainRigidbody: {fileID: 5057585118469843654}
   RootRagdoll: {fileID: 5772077133170876217}
   AttachRagdoll: {fileID: 5595257294472788482}
+  mainCollider: {fileID: 5057585118469843649}
+  mainRigidbody: {fileID: 5057585118469843654}
 --- !u!1 &5378817904460601160
 GameObject:
   m_ObjectHideFlags: 0

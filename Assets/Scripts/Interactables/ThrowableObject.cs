@@ -51,10 +51,6 @@ public class ThrowableObject : MonoBehaviour
         if (stuneable == null)
             return;
 
-        var rb = other.gameObject.GetComponent<Rigidbody>();
-        if (rb == null)
-            return;
-        
         stuneable.Stun(rb.velocity);
     }
 }

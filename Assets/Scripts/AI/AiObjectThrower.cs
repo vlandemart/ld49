@@ -27,13 +27,17 @@ public class AiObjectThrower : MonoBehaviour
     public bool TryHoldObject()
     {
         ThrowableObject obj = _provider.closestThrowable;
-        if (obj != null && _currentThrowable == null && !obj.taken)
-        {
-            TrySetObjectAsCurrent(obj);
-            return true;
-        }
+        if (obj == null)
+            return false;
 
-        return false;
+        if (obj.taken || obj.GetCurrentSpeed() > 2f)
+            return false;
+
+        if (_currentThrowable != null)
+            return false;
+        
+        TrySetObjectAsCurrent(obj);
+        return true;
     }
 
     private Vector3 _targetPos;
