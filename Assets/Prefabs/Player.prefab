@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &245930189
 Transform:
   m_ObjectHideFlags: 0
@@ -72,7 +72,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.3
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1531,6 +1531,7 @@ MonoBehaviour:
   AttachRagdoll: {fileID: 4828108838846355701}
   mainCollider: {fileID: 8200175755398732314}
   mainRigidbody: {fileID: 5816148374982684255}
+  rotationSpeed: 5
 --- !u!114 &4237118891215685755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1545,11 +1546,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5816148374982684255}
   Animator: {fileID: 9092248669431162953}
-  speed: 300
+  speed: 450
   dash_speed: 1600
-  dash_time: 0.1
+  dash_time: 0.2
   dash_cooldown: 0.6
-  dash_graphics: {fileID: 245930188}
+  dashTrail: {fileID: 245930190}
+  gravity: 1
 --- !u!114 &3844856993504563975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,10 +1580,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a24a7c50fb37d77bc6fe064a77f114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 20
+  throwForce: 40
   targetPositionMarker: {fileID: 3844856993608486397}
   throwableObjectAttachTransform: {fileID: 3844856993426863227}
-  maxThrowDistance: 10
+  maxThrowDistance: 100
 --- !u!1 &6530242422240081855
 GameObject:
   m_ObjectHideFlags: 0

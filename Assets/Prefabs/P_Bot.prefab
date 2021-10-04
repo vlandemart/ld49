@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a401f15740c1f4cbd68b7baeb65211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 20
+  throwForce: 40
   throwableObjectAttachTransform: {fileID: 4430554510477718643}
 --- !u!114 &283821912976177256
 MonoBehaviour:
@@ -953,6 +953,7 @@ MonoBehaviour:
   AttachRagdoll: {fileID: 5595257294472788482}
   mainCollider: {fileID: 5057585118469843649}
   mainRigidbody: {fileID: 5057585118469843654}
+  rotationSpeed: 5
 --- !u!1 &5378817904460601160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,13 +1770,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f118f4bbfbc984ab42390cdabe1b99, type: 3}
---- !u!4 &6878859659733908720 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 50f118f4bbfbc984ab42390cdabe1b99, type: 3}
-  m_PrefabInstance: {fileID: 6412042950557653787}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6070094488104363594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 50f118f4bbfbc984ab42390cdabe1b99, type: 3}
+  m_PrefabInstance: {fileID: 6412042950557653787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6878859659733908720 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 50f118f4bbfbc984ab42390cdabe1b99, type: 3}
   m_PrefabInstance: {fileID: 6412042950557653787}
   m_PrefabAsset: {fileID: 0}
