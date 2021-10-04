@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PersonalMovement : MonoBehaviour
@@ -7,7 +8,14 @@ public class PersonalMovement : MonoBehaviour
     public Animator Animator;
 
     public float speed = 6f;
+    public float dash_speed = 800f;
+    public float dash_time = 0.1f;
+    public float dash_cooldown = 1f;
+
     private static readonly int Velocity = Animator.StringToHash("Velocity");
+
+    private bool isDashing;
+    public static bool isInvincibleOnDashing;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -45,5 +53,25 @@ public class PersonalMovement : MonoBehaviour
             Animator.SetFloat(Velocity, 0);
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
         }
+
+        if (Input.GetKey(KeyCode.LeftShift) && isDashing == false)
+        {
+            StartCoroutine(dash());
+        }
     }
+
+    IEnumerator dash()
+    {
+        isDashing = true;
+        isInvincibleOnDashing = true;
+        float old_speed = speed;
+        speed = dash_speed;
+        yield return new WaitForSeconds(dash_time);
+        isInvincibleOnDashing = false;
+        speed = old_speed;
+        yield return new WaitForSeconds(dash_cooldown);
+        isDashing = false;
+    }
+    
+    
 }

@@ -50,7 +50,7 @@ public class ThrowableObject : MonoBehaviour
         var stuneable = other.gameObject.GetComponent<Stuneable>();
         if (stuneable == null)
             return;
-
-        stuneable.Stun(rb.velocity);
+        if(!PersonalMovement.isInvincibleOnDashing)
+            stuneable.Stun(rb.velocity);
     }
 }

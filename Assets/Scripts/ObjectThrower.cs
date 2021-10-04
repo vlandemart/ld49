@@ -12,6 +12,7 @@ public class ObjectThrower : MonoBehaviour
     private InteractibleObjectsProvider _provider;
 
     private ThrowableObject _currentThrowable;
+    private Vector3 ogPosition;
 
     private Animator animator;
     private static readonly int Throw = Animator.StringToHash("Throw");
@@ -30,6 +31,7 @@ public class ObjectThrower : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         InputManager.Instance.OnLeftMouseButtonDown.AddListener(PlayAnim);
+        ogPosition = transform.position;
     }
 
     private void Update()
