@@ -11,7 +11,7 @@ public class PersonalMovement : MonoBehaviour
     public float dash_speed = 800f;
     public float dash_time = 0.1f;
     public float dash_cooldown = 1f;
-    public GameObject dash_graphics;
+    [SerializeField] private TrailRenderer dashTrail;
     
     private static readonly int Velocity = Animator.StringToHash("Velocity");
 
@@ -63,13 +63,13 @@ public class PersonalMovement : MonoBehaviour
 
     IEnumerator dash()
     {
-        dash_graphics.SetActive(true);
+        dashTrail.emitting = true;
         isDashing = true;
         isInvincibleOnDashing = true;
         float old_speed = speed;
         speed = dash_speed;
         yield return new WaitForSeconds(dash_time);
-        dash_graphics.SetActive(false);
+        dashTrail.emitting = false;
         isInvincibleOnDashing = false;
         speed = old_speed;
         yield return new WaitForSeconds(dash_cooldown);
