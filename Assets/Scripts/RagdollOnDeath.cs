@@ -70,6 +70,11 @@ public class RagdollOnDeath : MonoBehaviour
 
     private void EnableRagdoll(Vector3 hitObjectVelocity)
     {
+        if (transform.name != "Player")
+        {
+            FindObjectOfType<NuclearCountdown>().addPoints(NuclearCountdown.pointsByAIHit);
+        }
+        
         isRagdolled = true;
         RootRagdoll.transform.SetParent(null);
         mainAnimator.enabled = false;
