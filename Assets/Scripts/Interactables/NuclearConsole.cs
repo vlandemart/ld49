@@ -175,5 +175,12 @@ public class NuclearConsole : InteractiveResponse
             var force = (rb.position - transform.position).normalized * explosionForce;
             rb.AddForce(force);
         }
+        
+        var stuneables = FindObjectsOfType<Stuneable>();
+        foreach (Stuneable stuneable in stuneables)
+        {
+            var force = (stuneable.transform.position - transform.position).normalized * 3000;
+            stuneable.Stun(force, true);
+        }
     }
 }

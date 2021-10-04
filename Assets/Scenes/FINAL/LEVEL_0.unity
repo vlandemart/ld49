@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPrefab: {fileID: 7979568450096236159, guid: e551e9843d8a99944810c1d942f3f6aa, type: 3}
   minTime: 5
-  maxTime: 7
+  maxTime: 15
 --- !u!1 &84087653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,7 +2631,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431852
+  m_Name: pb_Mesh-141022
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3723,7 +3723,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.054661274, y: 0.0026580095, z: 0.054661274}
   m_Shapes:
     vertices: []
     shapes: []
@@ -3875,7 +3875,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431858
+  m_Name: pb_Mesh-141052
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4596,8 +4596,8 @@ Mesh:
     firstVertex: 0
     vertexCount: 24
     localAABB:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Center: {x: 0.5, y: 0.12499994, z: -0.5}
+      m_Extent: {x: 0.5, y: 0.12499994, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -5127,7 +5127,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431846
+  m_Name: pb_Mesh-140992
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6303,8 +6303,8 @@ Mesh:
     firstVertex: 0
     vertexCount: 24
     localAABB:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Center: {x: 0.5, y: 0.12499994, z: -0.5}
+      m_Extent: {x: 0.5, y: 0.12499994, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -7325,7 +7325,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.054661274, y: 0.0026580095, z: 0.054661274}
   m_Shapes:
     vertices: []
     shapes: []
@@ -9206,7 +9206,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.054661274, y: 0.0026580095, z: 0.054661274}
   m_Shapes:
     vertices: []
     shapes: []
@@ -11738,7 +11738,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431848
+  m_Name: pb_Mesh-141002
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26052,7 +26052,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431856
+  m_Name: pb_Mesh-141042
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -38719,7 +38719,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.054661274, y: 0.0026580095, z: 0.054661274}
   m_Shapes:
     vertices: []
     shapes: []
@@ -47124,8 +47124,8 @@ Mesh:
     firstVertex: 0
     vertexCount: 24
     localAABB:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Center: {x: 0.5, y: 0.24999994, z: -0.5}
+      m_Extent: {x: 0.5, y: 0.24999994, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -50961,7 +50961,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.054661274, y: 0.0026580095, z: 0.054661274}
   m_Shapes:
     vertices: []
     shapes: []
@@ -52615,7 +52615,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.054661274, y: 0.0026580095, z: 0.054661274}
   m_Shapes:
     vertices: []
     shapes: []
@@ -59578,7 +59578,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431842
+  m_Name: pb_Mesh-140972
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -61731,7 +61731,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431840
+  m_Name: pb_Mesh-140962
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -62483,7 +62483,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431850
+  m_Name: pb_Mesh-141012
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -62919,7 +62919,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.054661274, y: 0.0026580095, z: 0.054661274}
   m_Shapes:
     vertices: []
     shapes: []
@@ -69555,7 +69555,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431838
+  m_Name: pb_Mesh-140952
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -76503,7 +76503,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.054661274, y: 0.0026580095, z: 0.054661274}
   m_Shapes:
     vertices: []
     shapes: []
@@ -79522,8 +79522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPrefab: {fileID: 5057585118469843662, guid: 1481b5efb5cc48b4da74dee06fe95fbf, type: 3}
-  minTime: 15
-  maxTime: 30
+  minTime: 5
+  maxTime: 15
 --- !u!1 &2036309583
 GameObject:
   m_ObjectHideFlags: 0
@@ -80583,7 +80583,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431854
+  m_Name: pb_Mesh-141032
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -81428,7 +81428,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-431844
+  m_Name: pb_Mesh-140982
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -82797,6 +82797,14 @@ PrefabInstance:
     - target: {fileID: 4293691104940718312, guid: 7c27db221f85a58b486bc7774731ee88, type: 3}
       propertyPath: startTimer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293691104940718312, guid: 7c27db221f85a58b486bc7774731ee88, type: 3}
+      propertyPath: signalsNeeded
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293691104940718312, guid: 7c27db221f85a58b486bc7774731ee88, type: 3}
+      propertyPath: explosionForce
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 4293691104940718312, guid: 7c27db221f85a58b486bc7774731ee88, type: 3}
       propertyPath: countdownMaxTime

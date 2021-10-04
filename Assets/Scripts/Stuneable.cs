@@ -23,10 +23,17 @@ public class Stuneable : MonoBehaviour
         return isStunned;
     }
 
-    public void Stun(Vector3 velocity)
+    public void Stun(Vector3 velocity, bool force = false)
     {
         if (IsStunned())
             return;
+
+        if (force)
+        {
+            EnterStun(velocity, true);
+            return;
+        }
+        
         if (velocity.magnitude < speedToStun)
             return;
 
@@ -73,11 +80,20 @@ public class Stuneable : MonoBehaviour
         }
     }
 
-    private void EnterStun(Vector3 velocity)
+    private void EnterStun(Vector3 velocity, bool limitless = false)
     {
         isStunned = true;
         hasPreExitedStun = false;
-        stunEndTime = Time.time + stunTime;
+
+        if (limitless)
+        {
+            stunEndTime = Time.time + 999999999;
+        }
+        else
+        {
+            stunEndTime = Time.time + stunTime;    
+        }
+        
         preExitStunTime = stunEndTime - preStunTime;
 
         GetComponent<ObjectThrower>()?.DropObject();
