@@ -1,6 +1,9 @@
+using System;
 using Sigtrap.Relays;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class NuclearConsole : InteractiveResponse
 {
@@ -11,9 +14,11 @@ public class NuclearConsole : InteractiveResponse
     public readonly Relay OnBecameUnstable = new Relay();
     public readonly Relay OnLevelLost = new Relay();
     public readonly Relay OnLevelFinished = new Relay();
+    public float coolTime = 10;
 
     [SerializeField] private float explosionForce = 300f;
     [SerializeField] private int signalsNeeded = 5;
+
 
     [FormerlySerializedAs("countdownMaxTime")] [SerializeField]
     private float MaxTime = 30f;
@@ -27,11 +32,15 @@ public class NuclearConsole : InteractiveResponse
     [SerializeField] private AudioClip stableSound;
     [SerializeField] private AudioClip unstableSound;
 
+    [SerializeField] private Slider slider;
+
+    public float startTimer = 7f;
     private float currentTimer = 0f;
     private float currentStableTime = 0f;
     private int currentSignals = 0;
     private bool isUnstable;
     private bool isLevelFinished;
+
 
     public override void DoResponseAction()
     {
@@ -61,7 +70,7 @@ public class NuclearConsole : InteractiveResponse
 
     private void Start()
     {
-        currentTimer = 0;
+        currentTimer = startTimer;
     }
 
     private void Update()
@@ -102,12 +111,21 @@ public class NuclearConsole : InteractiveResponse
     private void UpdateTimer()
     {
         currentTimer += Time.deltaTime;
+        slider.value = currentTimer;
+        slider.maxValue = MaxTime;
+
         OnCountdownTimerChanged?.Dispatch(currentTimer);
 
         if (currentTimer >= MaxTime)
         {
             LoseLevel();
         }
+    }
+
+    public void Cool()
+    {
+        currentTimer -= coolTime;
+        currentTimer = Mathf.Clamp(currentTimer, 0, MaxTime);
     }
 
     //If nuclear is stable for N seconds - win the game

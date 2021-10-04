@@ -16,6 +16,7 @@ public class PechkaDomain : MonoBehaviour
             FindObjectOfType<NuclearCountdown>().addPoints(NuclearCountdown.pointsByPechkaHit);
             Destroy(other.gameObject);
             onNuclearBoxEnterParticles.Play();
+            NuclearConsole.Cool();
         }
     }
 }
