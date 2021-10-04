@@ -10,6 +10,7 @@ public class PersonalMovement : MonoBehaviour
     public float speed = 6f;
     public float dash_speed = 800f;
     public float dash_time = 0.1f;
+
     public float dash_cooldown = 1f;
     [SerializeField] private TrailRenderer dashTrail;
     
@@ -17,6 +18,12 @@ public class PersonalMovement : MonoBehaviour
 
     private bool isDashing;
     public static bool isInvincibleOnDashing;
+    [SerializeField] private float gravity = 5f;
+
+    private void Start()
+    {
+        dashTrail.emitting = false;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -44,7 +51,7 @@ public class PersonalMovement : MonoBehaviour
             Vector3 movementVector = forward * vertical + right * horizontal;
             movementVector.Normalize();
             movementVector *= speed * Time.fixedDeltaTime;
-            movementVector.y = rb.velocity.y;
+            movementVector.y = rb.velocity.y - gravity;
             rb.velocity = movementVector;
 
             Animator.SetFloat(Velocity, movementVector.magnitude);
@@ -52,7 +59,7 @@ public class PersonalMovement : MonoBehaviour
         else
         {
             Animator.SetFloat(Velocity, 0);
-            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            rb.velocity = new Vector3(0, rb.velocity.y - gravity, 0);
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && isDashing == false)
@@ -75,6 +82,4 @@ public class PersonalMovement : MonoBehaviour
         yield return new WaitForSeconds(dash_cooldown);
         isDashing = false;
     }
-    
-    
 }
