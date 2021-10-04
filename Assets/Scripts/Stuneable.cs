@@ -6,9 +6,11 @@ using Random = UnityEngine.Random;
 public class Stuneable : MonoBehaviour
 {
     public readonly Relay<Vector3> OnEnterStun = new Relay<Vector3>();
+    public readonly Relay OnPrepareExitStun = new Relay();
     public readonly Relay OnExitStun = new Relay();
     
     [SerializeField] private float stunTime = 2.0f;
+    [SerializeField] private float preStunTime = 1f; //Just don't change it, it is for animator in OnRagdollDeath()
     [SerializeField] private float speedToStun = 8f;
     [SerializeField] private bool stunFromEditor;
     [SerializeField] private GameObject stubEffectGo;
@@ -34,7 +36,9 @@ public class Stuneable : MonoBehaviour
     //Private
     
     private float stunEndTime;
+    private float preExitStunTime;
     private bool isStunned;
+    private bool hasPreExitedStun;
 
     private void Start()
     {
@@ -58,6 +62,11 @@ public class Stuneable : MonoBehaviour
             Stun(Vector3.zero);
         }
 
+        if (!hasPreExitedStun && Time.time > preExitStunTime)
+        {
+            PrepareExitStun(); 
+        }
+
         if (isStunned && Time.time > stunEndTime)
         {
             ExitStun();
@@ -67,7 +76,9 @@ public class Stuneable : MonoBehaviour
     private void EnterStun(Vector3 velocity)
     {
         isStunned = true;
+        hasPreExitedStun = false;
         stunEndTime = Time.time + stunTime;
+        preExitStunTime = stunEndTime - preStunTime;
 
         GetComponent<ObjectThrower>()?.DropObject();
         PlaySound();
@@ -76,11 +87,16 @@ public class Stuneable : MonoBehaviour
         OnEnterStun?.Dispatch(velocity);
     }
 
+    private void PrepareExitStun()
+    {
+        hasPreExitedStun = true;
+        SwitchFaces(true);
+        OnPrepareExitStun?.Dispatch();
+    }
+
     private void ExitStun()
     {
         isStunned = false;
-
-        SwitchFaces(true);
         stubEffectGo.SetActive(false);
         OnExitStun?.Dispatch();
     }
