@@ -30,7 +30,7 @@ public class AiObjectThrower : MonoBehaviour
         if (obj == null)
             return false;
 
-        if (obj.taken || obj.GetCurrentSpeed() > 2f)
+        if (obj.taken || obj.GetCurrentSpeed() > 0.5f)
             return false;
 
         if (_currentThrowable != null)

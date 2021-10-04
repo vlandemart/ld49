@@ -16,7 +16,7 @@ public class ObjectThrower : MonoBehaviour
 
     private Animator animator;
     private static readonly int Throw = Animator.StringToHash("Throw");
-    
+
     public bool IsHoldingObject()
     {
         return _currentThrowable != null;
@@ -36,9 +36,13 @@ public class ObjectThrower : MonoBehaviour
 
     private void Update()
     {
+        DrawAim();
+
         ThrowableObject obj = _provider.closestThrowable;
         if (obj == null)
+        {
             return;
+        }
 
         if (_currentThrowable == null && Input.GetKeyDown(KeyCode.E))
         {
@@ -47,12 +51,14 @@ public class ObjectThrower : MonoBehaviour
         }
 
         if (_currentThrowable == null)
+        {
             return;
-
-        DrawAim();
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
+        {
             DropObject();
+        }
     }
 
     private void DrawAim()
