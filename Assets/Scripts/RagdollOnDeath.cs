@@ -25,6 +25,12 @@ public class RagdollOnDeath : MonoBehaviour
     private bool isKinematicByDefault;
     private bool isRagdolled;
 
+    private Rigidbody[] bones;
+    private Quaternion[] rotations;
+    
+    public float rotationSpeed = 5f;
+    private bool blendEnabled;
+
     private void Awake()
     {
         stuneable = GetComponent<Stuneable>();
@@ -38,6 +44,28 @@ public class RagdollOnDeath : MonoBehaviour
         DisableRagdollStep();
         stuneable.OnEnterStun.AddListener(EnableRagdoll);
         stuneable.OnExitStun.AddListener(DisableRagdoll);
+
+        bones = GetCompNoRoot<Rigidbody>(RootRagdoll);
+        rotations = new Quaternion[bones.Length];
+        for (int i = 0; i < bones.Length; i++)
+        {
+            rotations[i] = bones[i].transform.localRotation;
+        }
+    }
+
+    T[] GetCompNoRoot<T>(GameObject obj) where T : Component
+    {
+        List<T> tList = new List<T>();
+        T[] comps = GetComponentsInChildren<T>();
+        foreach (T comp in comps)
+        {
+            if (comp.gameObject.GetInstanceID() != obj.GetInstanceID())
+            {
+                tList.Add(comp);
+            }
+        }
+
+        return tList.ToArray();
     }
 
     private void EnableRagdoll(Vector3 hitObjectVelocity)
@@ -76,7 +104,8 @@ public class RagdollOnDeath : MonoBehaviour
     private void DisableRagdoll()
     {
         DisableRagdollStep();
-        StartCoroutine(ToggleAnimator(0.5f));
+        blendEnabled = true;
+        StartCoroutine(ToggleAnimator(1f));
     }
 
     private void DisableRagdollStep()
@@ -104,6 +133,18 @@ public class RagdollOnDeath : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (blendEnabled)
+        {
+            for (int i = 0; i < bones.Length; i++)
+            {
+                bones[i].transform.localRotation =
+                    Quaternion.Lerp(bones[i].transform.localRotation, rotations[i], Time.deltaTime * rotationSpeed);
+            }
+        }
+    }
+
     private IEnumerator ToggleAnimator(float time)
     {
         // Wait for "time" seconds and then set animator to "actv"
@@ -112,6 +153,7 @@ public class RagdollOnDeath : MonoBehaviour
 
         yield return new WaitForSeconds(time);
 
+        blendEnabled = false;
         mainAnimator.enabled = true;
 
         Vector3 position = RootRagdoll.transform.position;
