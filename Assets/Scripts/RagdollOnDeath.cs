@@ -43,7 +43,7 @@ public class RagdollOnDeath : MonoBehaviour
         torsoLocalPosition = RootRagdoll.transform.localPosition;
         DisableRagdollStep();
         stuneable.OnEnterStun.AddListener(EnableRagdoll);
-        stuneable.OnExitStun.AddListener(DisableRagdoll);
+        stuneable.OnPrepareExitStun.AddListener(DisableRagdoll);
 
         bones = GetCompNoRoot<Rigidbody>(RootRagdoll);
         rotations = new Quaternion[bones.Length];
