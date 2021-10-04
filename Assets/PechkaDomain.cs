@@ -6,6 +6,8 @@ using UnityEngine;
 public class PechkaDomain : MonoBehaviour
 {
     public ParticleSystem onNuclearBoxEnterParticles;
+
+    public NuclearConsole NuclearConsole;
     
     private void OnTriggerEnter(Collider other)
     {

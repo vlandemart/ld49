@@ -1,5 +1,6 @@
 using Sigtrap.Relays;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class NuclearConsole : InteractiveResponse
 {
@@ -13,12 +14,14 @@ public class NuclearConsole : InteractiveResponse
 
     [SerializeField] private float explosionForce = 300f;
     [SerializeField] private int signalsNeeded = 5;
-    [SerializeField] private float countdownMaxTime = 30f;
+
+    [FormerlySerializedAs("countdownMaxTime")] [SerializeField]
+    private float MaxTime = 30f;
+
     [SerializeField] private float timeToStabilize = 4f;
     [SerializeField] private ParticleSystem nuclearBlast;
-    
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
+
+    [Header("Audio")] [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioClip loseSound;
     [SerializeField] private AudioClip stableSound;
@@ -58,14 +61,14 @@ public class NuclearConsole : InteractiveResponse
 
     private void Start()
     {
-        currentTimer = countdownMaxTime;
+        currentTimer = 0;
     }
 
     private void Update()
     {
         if (isLevelFinished)
             return;
-        
+
         if (!isUnstable && currentSignals < signalsNeeded)
             MakeUnstable();
 
@@ -83,7 +86,7 @@ public class NuclearConsole : InteractiveResponse
     {
         currentStableTime = 0f;
         OnStableTimeChanged?.Dispatch(currentStableTime);
-        
+
         isUnstable = true;
         OnBecameUnstable?.Dispatch();
         PlaySound(unstableSound);
@@ -98,11 +101,13 @@ public class NuclearConsole : InteractiveResponse
 
     private void UpdateTimer()
     {
-        currentTimer -= Time.deltaTime;
+        currentTimer += Time.deltaTime;
         OnCountdownTimerChanged?.Dispatch(currentTimer);
-        
-        if (currentTimer <= 0)
+
+        if (currentTimer >= MaxTime)
+        {
             LoseLevel();
+        }
     }
 
     //If nuclear is stable for N seconds - win the game
@@ -110,7 +115,7 @@ public class NuclearConsole : InteractiveResponse
     {
         currentStableTime += Time.deltaTime;
         OnStableTimeChanged?.Dispatch(currentStableTime);
-        
+
         if (currentStableTime > timeToStabilize)
             FinishLevel();
     }
@@ -119,7 +124,7 @@ public class NuclearConsole : InteractiveResponse
     {
         isLevelFinished = true;
         PlaySound(winSound);
-        
+
         OnLevelFinished?.Dispatch();
     }
 
@@ -130,15 +135,15 @@ public class NuclearConsole : InteractiveResponse
         nuclearBlast.Play();
         PlaySound(loseSound);
         Explode();
-        
+
         OnLevelLost?.Dispatch();
     }
-    
+
     private void PlaySound(AudioClip clipToPlay)
     {
         if (audioSource == null || clipToPlay == null)
             return;
-        
+
         audioSource.pitch = Random.Range(0.9f, 1.1f);
         audioSource.clip = clipToPlay;
         audioSource.Play();

@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class NuclearCountdown : MonoBehaviour
 {
+    
+    
+    [SerializeField] private Slider slider;
+    
     [SerializeField] private TMP_Text countdownText;
     [SerializeField] private TMP_Text loseLevelText;
     [SerializeField] private Gradient loseLevelGradient;

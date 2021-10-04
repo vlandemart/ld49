@@ -19,7 +19,7 @@ public class AiMovement : MonoBehaviour
 
         return availableInteractiveObject[0].GameObject.transform.position;
     }
-    
+
     [SerializeField] private float maxObjectSpeedToCatch = 0.3f;
     [SerializeField] private float range = 10f;
     [SerializeField] private string interactableTag = "Interactable";
@@ -27,7 +27,6 @@ public class AiMovement : MonoBehaviour
     private Animator animator;
     private NavMeshAgent navMeshAgent;
     private BehaviorTree behaviorTree;
-    private GameObject[] interactiveObjects;
     private static readonly int Velocity = Animator.StringToHash("Velocity");
 
     private void Start()
@@ -35,10 +34,8 @@ public class AiMovement : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         behaviorTree = GetComponentInChildren<BehaviorTree>();
-        
-        interactiveObjects = GameObject.FindGameObjectsWithTag(interactableTag);
     }
-    
+
     private void Update()
     {
         if (this.IsStunned())
@@ -53,10 +50,10 @@ public class AiMovement : MonoBehaviour
             behaviorTree.EnableBehavior();
         }
 
-        if (RandomPoint(transform.position, out var point))
-        {
-            Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-        }
+        // if (RandomPoint(transform.position, out var point))
+        // {
+        //     Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+        // }
     }
 
     private void FixedUpdate()
@@ -66,28 +63,30 @@ public class AiMovement : MonoBehaviour
             animator.SetFloat(Velocity, 0);
             return;
         }
-        
+
         animator.SetFloat(Velocity, navMeshAgent.velocity.magnitude);
     }
 
-    private bool RandomPoint(Vector3 center, out Vector3 result)
-    {
-        for (int i = 0; i < 30; i++)
-        {
-            var randomPoint = center + Random.insideUnitSphere * range;
-            if (!NavMesh.SamplePosition(randomPoint, out var hit, 1.0f, NavMesh.AllAreas))
-                continue;
-
-            result = hit.position;
-            return true;
-        }
-
-        result = Vector3.zero;
-        return false;
-    }
+    // private bool RandomPoint(Vector3 center, out Vector3 result)
+    // {
+    //     for (int i = 0; i < 30; i++)
+    //     {
+    //         var randomPoint = center + Random.insideUnitSphere * range;
+    //         if (!NavMesh.SamplePosition(randomPoint, out var hit, 1.0f, NavMesh.AllAreas))
+    //             continue;
+    //
+    //         result = hit.position;
+    //         return true;
+    //     }
+    //
+    //     result = Vector3.zero;
+    //     return false;
+    // }
 
     private List<GameObjectWithDist> GetAvailableInteractiveObject()
     {
+        GameObject[] interactiveObjects = GameObject.FindGameObjectsWithTag(interactableTag);
+
         var list = new List<GameObjectWithDist>();
         if (interactiveObjects == null)
             return list;
@@ -95,7 +94,8 @@ public class AiMovement : MonoBehaviour
         foreach (var interactiveObject in interactiveObjects)
         {
             var throwableObject = interactiveObject.GetComponent<ThrowableObject>();
-            if (throwableObject == null || throwableObject.taken || throwableObject.GetCurrentSpeed() > maxObjectSpeedToCatch)
+            if (throwableObject == null || throwableObject.taken ||
+                throwableObject.GetCurrentSpeed() > maxObjectSpeedToCatch)
                 continue;
 
             var path = new NavMeshPath();
@@ -123,7 +123,7 @@ public class AiMovement : MonoBehaviour
         var pathLength = 0.0f;
         if (path.status == NavMeshPathStatus.PathInvalid)
             return pathLength;
-        
+
         for (int i = 1; i < path.corners.Length; ++i)
         {
             pathLength += Vector3.Distance(path.corners[i - 1], path.corners[i]);
