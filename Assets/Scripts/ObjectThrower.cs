@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ObjectThrower : MonoBehaviour
 {
@@ -8,6 +6,7 @@ public class ObjectThrower : MonoBehaviour
     [SerializeField] private GameObject targetPositionMarker;
     [SerializeField] private Transform throwableObjectAttachTransform;
     [SerializeField] private float maxThrowDistance = 10f;
+    [SerializeField] private AudioSource throwSound;
 
     private InteractibleObjectsProvider _provider;
 
@@ -128,5 +127,12 @@ public class ObjectThrower : MonoBehaviour
 
         targetPositionMarker.SetActive(false);
         animator.SetLayerWeight(1, 0);
+        PlaySound();
+    }
+    
+    public void PlaySound()
+    {
+        throwSound.pitch = Random.Range(.9f, 1.1f);
+        throwSound.Play();
     }
 }
