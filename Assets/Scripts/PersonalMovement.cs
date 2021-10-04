@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,6 +12,7 @@ public class PersonalMovement : MonoBehaviour
 
     public float dash_cooldown = 1f;
     [SerializeField] private TrailRenderer dashTrail;
+    [SerializeField] private AudioSource dashSound;
     
     private static readonly int Velocity = Animator.StringToHash("Velocity");
 
@@ -72,6 +72,7 @@ public class PersonalMovement : MonoBehaviour
     {
         dashTrail.emitting = true;
         isDashing = true;
+        PlaySound();
         isInvincibleOnDashing = true;
         float old_speed = speed;
         speed = dash_speed;
@@ -81,5 +82,11 @@ public class PersonalMovement : MonoBehaviour
         speed = old_speed;
         yield return new WaitForSeconds(dash_cooldown);
         isDashing = false;
+    }
+    
+    public void PlaySound()
+    {
+        dashSound.pitch = Random.Range(.9f, 1.1f);
+        dashSound.Play();
     }
 }

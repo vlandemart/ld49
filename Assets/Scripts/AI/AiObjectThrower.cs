@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AiObjectThrower : MonoBehaviour
 {
     [SerializeField] private float throwForce = 10;
     [SerializeField] private Transform throwableObjectAttachTransform;
+    [SerializeField] private AudioSource throwSound;
 
     private InteractibleObjectsProvider _provider;
 
@@ -63,6 +62,7 @@ public class AiObjectThrower : MonoBehaviour
         _currentThrowable = null;
 
         animator.SetLayerWeight(1, 0);
+        PlaySound();
     }
 
     private void Awake()
@@ -81,5 +81,11 @@ public class AiObjectThrower : MonoBehaviour
         _currentThrowable.transform.parent = throwableObjectAttachTransform;
         _currentThrowable.transform.localPosition = Vector3.zero;
         animator.SetLayerWeight(1, 1);
+    }
+    
+    public void PlaySound()
+    {
+        throwSound.pitch = Random.Range(.9f, 1.1f);
+        throwSound.Play();
     }
 }
