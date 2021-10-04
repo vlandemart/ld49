@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SpawnGameObject : MonoBehaviour
@@ -28,4 +30,11 @@ public class SpawnGameObject : MonoBehaviour
         Instantiate(myPrefab, transform.position, Quaternion.identity);
         waiting = false;
     }
+
+    private void OnDrawGizmos()
+    {
+        if (myPrefab)
+            Handles.Label(transform.position, myPrefab.name);
+    }
 }
+    
