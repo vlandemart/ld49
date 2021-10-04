@@ -55,10 +55,4 @@ public class SpawnSystem : MonoBehaviour
         Instantiate(myPrefab, spawnPoints[rndIndex].transform.position, Quaternion.identity);
         waiting = false;
     }
-
-    private void OnDrawGizmos()
-    {
-        if (myPrefab)
-            Handles.Label(transform.position, myPrefab.name);
-    }
 }
